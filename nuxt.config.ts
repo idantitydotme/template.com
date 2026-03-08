@@ -4,7 +4,7 @@ export default defineNuxtConfig({
     compatibilityVersion: 5,
   },
   experimental: {
-    // viteEnvironmentApi: false, // Default is usually fine
+    viteEnvironmentApi: false,
     typescriptPlugin: true,
     nitroAutoImports: true,
     componentIslands: {
@@ -68,7 +68,7 @@ export default defineNuxtConfig({
         crawlLinks: true,
       },
       routeRules: {
-        "/": { swr: true },
+        "/": { swr: true, prerender: true },
       },
     },
     site: {
@@ -126,21 +126,8 @@ export default defineNuxtConfig({
       ],
       link: [
         {
-          rel: "preconnect",
-          href: "https://placehold.co",
-        },
-        {
           rel: "dns-prefetch",
           href: "https://placehold.co",
-        },
-        {
-          rel: "preconnect",
-          href: "https://fonts.gstatic.com",
-          crossorigin: "",
-        },
-        {
-          rel: "dns-prefetch",
-          href: "https://fonts.gstatic.com",
         },
         {
           rel: "icon",

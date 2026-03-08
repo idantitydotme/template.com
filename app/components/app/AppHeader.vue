@@ -69,34 +69,36 @@ const socialLinks = [
     >
       <!-- Left Section (Mobile Menu / Desktop Nav) -->
       <div class="flex items-center">
-        <USlideover v-model:open="open" side="left" :ui="{ content: 'w-2/3' }" title="Menu">
-          <UButton
-            icon="i-lucide-menu"
-            color="neutral"
-            variant="ghost"
-            class="rounded-full my-auto sm:hidden"
-            aria-label="Open Menu"
-          />
-          <template #body>
-            <div class="flex flex-col gap-4">
-              <UNavigationMenu orientation="vertical" :items="[...leftLinks, ...rightLinks]" />
-              <LazyUSeparator />
-              <div class="flex flex-col gap-2">
-                <UButton
-                  v-for="(link, index) in socialLinks"
-                  :key="index"
-                  v-bind="link"
-                  variant="ghost"
-                  color="neutral"
-                  size="md"
-                  class="rounded-full hover:text-primary-500"
-                >
-                  {{ link["aria-label"] }}
-                </UButton>
+        <ClientOnly>
+          <USlideover v-model:open="open" side="left" :ui="{ content: 'w-2/3' }" title="Menu">
+            <UButton
+              icon="i-lucide-menu"
+              color="neutral"
+              variant="ghost"
+              class="rounded-full my-auto sm:hidden"
+              aria-label="Open Menu"
+            />
+            <template #body>
+              <div class="flex flex-col gap-4">
+                <UNavigationMenu orientation="vertical" :items="[...leftLinks, ...rightLinks]" />
+                <LazyUSeparator />
+                <div class="flex flex-col gap-2">
+                  <UButton
+                    v-for="(link, index) in socialLinks"
+                    :key="index"
+                    v-bind="link"
+                    variant="ghost"
+                    color="neutral"
+                    size="md"
+                    class="rounded-full hover:text-primary-500"
+                  >
+                    {{ link["aria-label"] }}
+                  </UButton>
+                </div>
               </div>
-            </div>
-          </template>
-        </USlideover>
+            </template>
+          </USlideover>
+        </ClientOnly>
 
         <div class="hidden sm:flex items-center">
           <UNavigationMenu
