@@ -133,7 +133,7 @@ export default defineNuxtConfig({
           "'self'",
           "data:",
           "blob:",
-          "https://template-dot-com.idantity.workers.dev",
+          "https://pub-15f7c276f8b449ac91d74fa56692d47f.r2.dev",
           "https://placehold.co",
         ],
         "script-src": ["'self'", "'unsafe-inline'", "'wasm-unsafe-eval'"],
@@ -242,7 +242,7 @@ export default defineNuxtConfig({
     format: ["webp"],
     provider: "cloudflare",
     cloudflare: {
-      baseURL: "https://template-dot-com.idantity.workers.dev",
+      baseURL: "https://pub-15f7c276f8b449ac91d74fa56692d47f.r2.dev",
     },
   },
 
