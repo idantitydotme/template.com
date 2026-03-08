@@ -257,6 +257,10 @@ export default defineNuxtConfig({
     zeroRuntime: true,
   },
 
+  sitemap: {
+    zeroRuntime: true,
+  },
+
   content: {
     build: {
       markdown: {
