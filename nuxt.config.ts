@@ -3,6 +3,9 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 5,
   },
+  features: {
+    inlineStyles: true,
+  },
   experimental: {
     viteEnvironmentApi: false,
     typescriptPlugin: true,
@@ -13,6 +16,7 @@ export default defineNuxtConfig({
     payloadExtraction: true,
     viewTransition: true,
     sharedPrerenderData: true,
+    clientFallback: true,
   },
 
   modules: [
@@ -66,21 +70,6 @@ export default defineNuxtConfig({
       prerender: {
         routes: ["/"],
         crawlLinks: true,
-      },
-      routeRules: {
-        "/": { swr: true, prerender: true },
-        "/**": {
-          headers: {
-            "Content-Security-Policy":
-              "default-src 'self'; img-src 'self' data: blob: https://your-r2-assets.r2.dev https://placehold.co; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; connect-src 'self' https://your-r2-assets.r2.dev https://api.iconify.design https://api.unisvg.com https://api.simplesvg.com; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; frame-ancestors 'self'; form-action 'self';",
-            "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
-            "X-Content-Type-Options": "nosniff",
-            "X-Frame-Options": "SAMEORIGIN",
-            "Referrer-Policy": "strict-origin-when-cross-origin",
-            "Cross-Origin-Opener-Policy": "same-origin",
-            "Cross-Origin-Resource-Policy": "same-origin",
-          },
-        },
       },
     },
     site: {
@@ -148,35 +137,29 @@ export default defineNuxtConfig({
         },
       ],
     },
-    viewTransition: true,
+    viewTransition: false,
   },
 
   security: {
-    ssg: {
-      meta: true,
-      exportToPresets: true,
-      hashScripts: true,
-      hashStyles: false, // Often causes issues with dynamic styles, but useful for strict CSP
-    },
     headers: {
       contentSecurityPolicy: {
         "img-src": [
           "'self'",
           "data:",
           "blob:",
-          "https://your-r2-assets.r2.dev",
+          "https://template-dot-com.idantity.workers.dev",
           "https://placehold.co",
         ],
         "script-src": ["'self'", "'unsafe-inline'", "'wasm-unsafe-eval'"],
         "script-src-attr": ["'none'"],
         "connect-src": [
           "'self'",
-          "https://your-r2-assets.r2.dev",
+          "https://template-dot-com.idantity.workers.dev",
           "https://api.iconify.design",
           "https://api.unisvg.com",
           "https://api.simplesvg.com",
         ],
-        "font-src": ["'self'", "https://fonts.gstatic.com", "https://fonts.googleapis.com"],
+        "font-src": ["'self'", "https://fonts.googleapis.com"],
         "style-src": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
         "frame-ancestors": ["'self'"],
         "form-action": ["'self'"],
@@ -241,8 +224,8 @@ export default defineNuxtConfig({
 
   fonts: {
     defaults: {
-      weights: [400, 500, 600, 700],
-      styles: ["normal", "italic"],
+      weights: [400, 600],
+      styles: ["normal"],
       preload: true,
     },
     families: [

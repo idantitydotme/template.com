@@ -132,32 +132,34 @@ const socialLinks = [
         <div class="flex items-stretch gap-1">
           <UColorModeButton size="sm" class="rounded-full" aria-label="Toggle color mode" />
 
-          <USelectMenu
-            :model-value="locale"
-            @update:model-value="setLocale($event as 'en' | 'pt')"
-            :items="[
-              { code: 'en', name: 'English' },
-              { code: 'pt', name: 'Português' },
-            ]"
-            value-key="code"
-            label-key="name"
-            icon="i-lucide-languages"
-            variant="ghost"
-            size="sm"
-            class="rounded-full shrink-0 h-full"
-            :ui="{
-              value: 'hidden',
-              content: 'w-48',
-            }"
-            :aria-label="t('app.language_picker')"
-          >
-            <template #leading="{ modelValue }">
-              <span class="text-xs font-medium">{{ modelValue === "pt" ? "PT" : "EN" }}</span>
-            </template>
-            <template #item-leading="{ item }">
-              <span class="text-xs font-medium">{{ item.code.toUpperCase() }}</span>
-            </template>
-          </USelectMenu>
+          <ClientOnly>
+            <USelectMenu
+              :model-value="locale"
+              @update:model-value="setLocale($event as 'en' | 'pt')"
+              :items="[
+                { code: 'en', name: 'English' },
+                { code: 'pt', name: 'Português' },
+              ]"
+              value-key="code"
+              label-key="name"
+              icon="i-lucide-languages"
+              variant="ghost"
+              size="sm"
+              class="rounded-full shrink-0 h-full"
+              :ui="{
+                value: 'hidden',
+                content: 'w-48',
+              }"
+              :aria-label="t('app.language_picker')"
+            >
+              <template #leading="{ modelValue }">
+                <span class="text-xs font-medium">{{ modelValue === "pt" ? "PT" : "EN" }}</span>
+              </template>
+              <template #item-leading="{ item }">
+                <span class="text-xs font-medium">{{ item.code.toUpperCase() }}</span>
+              </template>
+            </USelectMenu>
+          </ClientOnly>
 
           <div class="hidden sm:flex items-center gap-0.5">
             <UButton

@@ -227,39 +227,41 @@ const faqUi = {
     </UPageSection>
 
     <!-- FAQ Section -->
-    <UPageSection
-      :title="t('pages.index.faq.title')"
-      :description="t('pages.index.faq.description')"
-      :ui="{
-        container: 'px-0 !pt-0 gap-4 sm:gap-4',
-        title: 'text-center text-xl sm:text-xl lg:text-2xl font-medium',
-        description: 'text-center mt-2 text-sm sm:text-md lg:text-sm text-muted',
-      }"
-    >
-      <UContainer>
-        <UTabs :items="faqItems" orientation="horizontal" :ui="faqUi">
-          <template #content="{ item }">
-            <UAccordion
-              trailing-icon="lucide:plus"
-              :items="item.questions"
-              :unmount-on-hide="false"
-              :ui="{
-                item: 'border-none',
-                content: 'data-[state=open]:animate-none data-[state=closed]:animate-none',
-                trigger:
-                  'mb-2 border-0 group px-4 transform-gpu rounded-lg bg-elevated/60 will-change-transform hover:bg-muted/50 text-base',
-                trailingIcon:
-                  'group-data-[state=closed]:rotate-0 group-data-[state=open]:rotate-135 text-base text-muted',
-              }"
-            >
-              <template #body="{ item: _item }">
-                <MDC v-if="_item.content" :value="_item.content" unwrap="p" class="px-4" />
-              </template>
-            </UAccordion>
-          </template>
-        </UTabs>
-      </UContainer>
-    </UPageSection>
+    <ClientOnly>
+      <UPageSection
+        :title="t('pages.index.faq.title')"
+        :description="t('pages.index.faq.description')"
+        :ui="{
+          container: 'px-0 !pt-0 gap-4 sm:gap-4',
+          title: 'text-center text-xl sm:text-xl lg:text-2xl font-medium',
+          description: 'text-center mt-2 text-sm sm:text-md lg:text-sm text-muted',
+        }"
+      >
+        <UContainer>
+          <UTabs :items="faqItems" orientation="horizontal" :ui="faqUi">
+            <template #content="{ item }">
+              <UAccordion
+                trailing-icon="lucide:plus"
+                :items="item.questions"
+                :unmount-on-hide="false"
+                :ui="{
+                  item: 'border-none',
+                  content: 'data-[state=open]:animate-none data-[state=closed]:animate-none',
+                  trigger:
+                    'mb-2 border-0 group px-4 transform-gpu rounded-lg bg-elevated/60 will-change-transform hover:bg-muted/50 text-base',
+                  trailingIcon:
+                    'group-data-[state=closed]:rotate-0 group-data-[state=open]:rotate-135 text-base text-muted',
+                }"
+              >
+                <template #body="{ item: _item }">
+                  <MDC v-if="_item.content" :value="_item.content" unwrap="p" class="px-4" />
+                </template>
+              </UAccordion>
+            </template>
+          </UTabs>
+        </UContainer>
+      </UPageSection>
+    </ClientOnly>
 
     <!-- Post CTA -->
     <UPageCTA
