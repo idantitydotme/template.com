@@ -51,7 +51,7 @@ useSeoMeta((page.value?.seo || {}) as any);
     >
       <UPageGrid>
         <UPageCard
-          v-for="(project) in projects"
+          v-for="project in projects"
           :key="project.title"
           :title="project.title"
           :description="project.description"

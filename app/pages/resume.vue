@@ -150,11 +150,7 @@ const downloadPDF = () => {
           container: 'px-0 max-w-none py-16 sm:py-24',
         }"
       >
-        <img
-          src="https://placehold.co/800x400"
-          alt="Your Name"
-          class="w-full object-cover"
-        />
+        <img src="https://placehold.co/800x400" alt="Your Name" class="w-full object-cover" />
       </UPageHero>
 
       <UPageSection
@@ -310,11 +306,7 @@ const downloadPDF = () => {
         >
           <div class="flex flex-col gap-lg">
             <div class="flex flex-col items-center justify-center gap-sm">
-              <img
-                src="https://placehold.co/150"
-                alt="Your Name"
-                class="h-24 w-24 rounded-full"
-              />
+              <img src="https://placehold.co/150" alt="Your Name" class="h-24 w-24 rounded-full" />
               <h3 class="text-center font-bold text-highlighted">Your Name</h3>
               <UFieldGroup class="gap-xs pdf-exclude">
                 <UButton

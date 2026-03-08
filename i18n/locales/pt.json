@@ -11,11 +11,6 @@
       "contact": "Contato"
     }
   },
-  "studio": {
-    "tooltips": {
-      "toggleStudio": "Alternar Studio"
-    }
-  },
   "pages": {
     "blog": {
       "copyLink": "Copiar link",
