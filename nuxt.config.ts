@@ -152,10 +152,11 @@ export default defineNuxtConfig({
           "https://api.unisvg.com",
           "https://api.simplesvg.com",
         ],
-        "font-src": ["'self'", "https://fonts.googleapis.com"],
+        "font-src": ["'self'", "https://fonts.gstatic.com"],
         "style-src": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
         "frame-ancestors": ["'self'"],
         "form-action": ["'self'"],
+        "require-trusted-types-for": "'script'",
       },
       strictTransportSecurity: {
         maxAge: 31536000,
@@ -278,7 +279,7 @@ export default defineNuxtConfig({
     route: "/studio",
     repository: {
       provider: "github",
-      owner: "your-username",
+      owner: "idantitydotme",
       repo: "template.com",
     },
   },
