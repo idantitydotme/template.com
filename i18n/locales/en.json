@@ -1,14 +1,14 @@
 {
   "app": {
-    "language_picker": "Switch Language",
     "seoTitleTemplate": "%s - Your Name",
-    "navigation": {
+    "header": {
       "home": "Home",
       "projects": "Projects",
       "resume": "Resume",
       "blog": "Blog",
       "about": "About",
-      "contact": "Contact"
+      "contact": "Contact",
+      "languagePicker": "Switch Language"
     }
   },
   "pages": {
