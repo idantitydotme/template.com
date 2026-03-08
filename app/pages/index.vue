@@ -185,41 +185,43 @@ const faqUi = {
         container: 'px-0 !pt-0',
       }"
     >
-      <UCarousel
-        v-slot="{ item }"
-        :items="testimonialItems"
-        :autoplay="{ delay: 4000 }"
-        loop
-        dots
-        :ui="{
-          viewport: '-mx-4 sm:-mx-12 lg:-mx-16 max-w-(--ui-container)',
-        }"
-      >
-        <UPageCTA
-          variant="naked"
-          class="rounded-none w-full"
+      <ClientOnly>
+        <UCarousel
+          v-slot="{ item }"
+          :items="testimonialItems"
+          :autoplay="{ delay: 4000 }"
+          loop
+          dots
           :ui="{
-            container: 'sm:py-12 lg:py-12 sm:gap-10',
+            viewport: '-mx-4 sm:-mx-12 lg:-mx-16 max-w-(--ui-container)',
           }"
         >
-          <template #description>
-            <div class="flex flex-col items-center gap-4 text-center">
-              <UIcon name="i-lucide-quote" class="size-8 text-dimmed rotate-180" />
-              <p class="text-xl text-balance italic text-highlighted">
-                {{ rt(item.quote) }}
-              </p>
-              <UIcon name="i-lucide-quote" class="size-8 text-dimmed" />
-            </div>
-          </template>
-          <UUser
-            v-if="item && item.author"
-            :name="rt(item.author.name)"
-            :description="rt(item.author.description)"
-            size="xl"
-            class="justify-center"
-          />
-        </UPageCTA>
-      </UCarousel>
+          <UPageCTA
+            variant="naked"
+            class="rounded-none w-full"
+            :ui="{
+              container: 'sm:py-12 lg:py-12 sm:gap-10',
+            }"
+          >
+            <template #description>
+              <div class="flex flex-col items-center gap-4 text-center">
+                <UIcon name="i-lucide-quote" class="size-8 text-dimmed rotate-180" />
+                <p class="text-xl text-balance italic text-highlighted">
+                  {{ rt(item.quote) }}
+                </p>
+                <UIcon name="i-lucide-quote" class="size-8 text-dimmed" />
+              </div>
+            </template>
+            <UUser
+              v-if="item && item.author"
+              :name="rt(item.author.name)"
+              :description="rt(item.author.description)"
+              size="xl"
+              class="justify-center"
+            />
+          </UPageCTA>
+        </UCarousel>
+      </ClientOnly>
     </UPageSection>
 
     <!-- FAQ Section -->
@@ -235,22 +237,24 @@ const faqUi = {
       <UContainer>
         <UTabs :items="faqItems" orientation="horizontal" :ui="faqUi">
           <template #content="{ item }">
-            <UAccordion
-              trailing-icon="lucide:plus"
-              :items="item.questions"
-              :unmount-on-hide="false"
-              :ui="{
-                item: 'border-none',
-                trigger:
-                  'mb-2 border-0 group px-4 transform-gpu rounded-lg bg-elevated/60 will-change-transform hover:bg-muted/50 text-base',
-                trailingIcon:
-                  'group-data-[state=closed]:rotate-0 group-data-[state=open]:rotate-135 text-base text-muted',
-              }"
-            >
-              <template #body="{ item: _item }">
-                <MDC v-if="_item.content" :value="_item.content" unwrap="p" class="px-4" />
-              </template>
-            </UAccordion>
+            <ClientOnly>
+              <UAccordion
+                trailing-icon="lucide:plus"
+                :items="item.questions"
+                :unmount-on-hide="false"
+                :ui="{
+                  item: 'border-none',
+                  trigger:
+                    'mb-2 border-0 group px-4 transform-gpu rounded-lg bg-elevated/60 will-change-transform hover:bg-muted/50 text-base',
+                  trailingIcon:
+                    'group-data-[state=closed]:rotate-0 group-data-[state=open]:rotate-135 text-base text-muted',
+                }"
+              >
+                <template #body="{ item: _item }">
+                  <MDC v-if="_item.content" :value="_item.content" unwrap="p" class="px-4" />
+                </template>
+              </UAccordion>
+            </ClientOnly>
           </template>
         </UTabs>
       </UContainer>

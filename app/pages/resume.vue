@@ -17,7 +17,7 @@ const calculateAge = (dob: Date) => {
 const age = calculateAge(new Date(1990, 0, 1));
 
 const portugueseProgress = ref(100);
-const englishProgress = ref(100);
+const englishProgress = ref(75);
 
 const heroLinks = computed<ButtonProps[]>(() => [
   {
@@ -150,7 +150,7 @@ const downloadPDF = () => {
           container: 'px-0 max-w-none py-16 sm:py-24',
         }"
       >
-        <img src="https://placehold.co/800x400" alt="Your Name" class="w-full object-cover" />
+        <img src="https://placehold.co/512x512" alt="Your Name" class="w-full object-cover" />
       </UPageHero>
 
       <UPageSection

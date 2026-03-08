@@ -66,7 +66,7 @@ useSeoMeta((page.value?.seo || {}) as any);
           }"
         >
           <template #header>
-            <NuxtImg
+            <LazyNuxtImg
               v-if="project.image"
               :src="project.image"
               :alt="project.title"
@@ -74,7 +74,7 @@ useSeoMeta((page.value?.seo || {}) as any);
             />
             <div class="absolute top-4 left-4">
               <UBadge variant="subtle" color="neutral" size="sm">
-                {{ new Date(project.date).getFullYear() }}
+                {{ project.date ? new Date(project.date).getUTCFullYear() : '' }}
               </UBadge>
             </div>
           </template>
