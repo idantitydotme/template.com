@@ -3,9 +3,6 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 5,
   },
-  features: {
-    inlineStyles: true,
-  },
   experimental: {
     viteEnvironmentApi: false,
     typescriptPlugin: true,
@@ -13,10 +10,6 @@ export default defineNuxtConfig({
     componentIslands: {
       selectiveClient: true,
     },
-    payloadExtraction: true,
-    viewTransition: true,
-    sharedPrerenderData: true,
-    clientFallback: true,
   },
 
   modules: [
@@ -73,7 +66,7 @@ export default defineNuxtConfig({
       },
     },
     site: {
-      url: "https://template.com",
+      url: "https://template-dot-com.idantity.workers.dev",
       indexable: true,
     },
     robots: {
@@ -127,20 +120,20 @@ export default defineNuxtConfig({
       ],
       link: [
         {
-          rel: "dns-prefetch",
-          href: "https://placehold.co",
-        },
-        {
           rel: "icon",
           type: "image/svg+xml",
           href: "/favicon.svg",
         },
       ],
     },
-    viewTransition: false,
+    viewTransition: true,
   },
 
   security: {
+    ssg: {
+      meta: false,
+      exportToPresets: false,
+    },
     headers: {
       contentSecurityPolicy: {
         "img-src": [
@@ -173,7 +166,6 @@ export default defineNuxtConfig({
       referrerPolicy: "strict-origin-when-cross-origin",
       xFrameOptions: "SAMEORIGIN",
       xContentTypeOptions: "nosniff",
-      crossOriginResourcePolicy: "same-origin",
     },
   },
 
@@ -224,14 +216,27 @@ export default defineNuxtConfig({
 
   fonts: {
     defaults: {
-      weights: [400, 600],
-      styles: ["normal"],
-      preload: true,
+      weights: [
+        // Thin
+        100,
+        // ExtraLight
+        200,
+        // Light
+        300,
+        // Regular
+        400,
+        // Medium
+        500,
+        // SemiBold
+        600,
+        // Bold
+        700,
+        // Extra Bold
+        800,
+      ],
+      styles: ["normal", "italic"],
     },
-    families: [
-      { name: "Public Sans", provider: "google" },
-      { name: "Instrument Serif", provider: "google" },
-    ],
+    families: [],
   },
 
   icon: {
@@ -244,7 +249,7 @@ export default defineNuxtConfig({
     format: ["webp"],
     provider: "cloudflare",
     cloudflare: {
-      baseURL: "https://your-r2-assets.r2.dev",
+      baseURL: "https://template-dot-com.idantity.workers.dev",
     },
   },
 

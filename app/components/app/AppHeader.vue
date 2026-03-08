@@ -127,10 +127,10 @@ const socialLinks = [
           />
         </div>
 
-        <div class="hidden sm:block mx-1 my-2 w-px bg-muted/50" />
+        <LazyUSeparator class="hidden sm:block mx-1 my-2 w-px" />
 
         <div class="flex items-stretch gap-1">
-          <UColorModeButton size="sm" class="rounded-full" aria-label="Toggle color mode" />
+          <UColorModeButton size="sm" aria-label="Toggle color mode" />
 
           <ClientOnly>
             <USelectMenu
@@ -145,7 +145,7 @@ const socialLinks = [
               icon="i-lucide-languages"
               variant="ghost"
               size="sm"
-              class="rounded-full shrink-0 h-full"
+              class="shrink-0 h-full"
               :ui="{
                 value: 'hidden',
                 content: 'w-48',
@@ -161,7 +161,7 @@ const socialLinks = [
             </USelectMenu>
           </ClientOnly>
 
-          <div class="hidden sm:flex items-center gap-0.5">
+          <div class="hidden sm:flex items-center gap-xs">
             <UButton
               v-for="(link, index) in socialLinks"
               :key="index"
@@ -169,7 +169,7 @@ const socialLinks = [
               variant="ghost"
               color="neutral"
               size="md"
-              class="rounded-full hover:text-primary-500"
+              class="hover:text-primary-500"
             />
           </div>
         </div>

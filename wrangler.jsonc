@@ -10,13 +10,13 @@
       "invocation_logs": true,
     },
   },
-  // "d1_databases": [
-  //   {
-  //     "binding": "DB",
-  //     "database_name": "template-dot-com",
-  //     "database_id": "738a23b3-ca88-4985-acc0-0107f1cf593d",
-  //   },
-  // ],
+   "d1_databases": [
+     {
+       "binding": "DB",
+       "database_name": "template-dot-com",
+       "database_id": "2206a1d0-ce96-4aa1-a651-4d4053c24b62",
+    },
+   ]
   // "r2_buckets": [
   //   {
   //     "binding": "BLOB",
