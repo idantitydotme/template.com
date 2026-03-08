@@ -1,35 +1,62 @@
 <script setup lang="ts">
-const currentYear = new Date().getFullYear();
+/* region Props */
+/* endregion */
 
-const links = [
+/* region Emits */
+/* endregion */
+
+/* region Slots */
+/* endregion */
+
+/* region Styles */
+/* endregion */
+
+/* region State */
+const socialLinks = [
   {
-    icon: "i-simple-icons-github",
-    to: "#",
-    target: "_blank",
-    "aria-label": "GitHub",
+    name: "LinkedIn",
+    icon: "simple-icons:linkedin",
+    to: "https://linkedin.com",
+    class: "hover:text-primary-500",
   },
   {
-    icon: "i-simple-icons-linkedin",
-    to: "#",
-    target: "_blank",
-    "aria-label": "LinkedIn",
+    name: "GitHub",
+    icon: "simple-icons:github",
+    to: "https://github.com",
   },
 ];
+/* endregion */
+
+/* region Meta */
+/* endregion */
+
+/* region Lifecycle */
+/* endregion */
+
+/* region Logic */
+/* endregion */
 </script>
 
 <template>
-  <footer
-    class="mx-auto w-full max-w-(--ui-container) px-4 py-8 mb-4 text-muted text-xs flex flex-col-reverse sm:flex-row items-center justify-between gap-4"
-  >
-    <div>© {{ currentYear }} Your Name</div>
+  <UFooter>
+    <template #left>
+      <p class="text-muted text-xs">© {{ new Date().getFullYear() }} Daniel Marchi</p>
+    </template>
 
-    <div class="flex items-center gap-1">
+    <template #right>
       <UButton
-        v-for="(link, index) of links"
-        :key="index"
-        v-bind="{ size: 'md', color: 'neutral', variant: 'ghost', ...link }"
-        class="hover:text-primary-500"
+        v-for="link in socialLinks"
+        :key="link.name"
+        size="sm"
+        color="neutral"
+        variant="ghost"
+        :icon="link.icon"
+        :to="link.to"
+        target="_blank"
+        :aria-label="link.name"
+        :class="link.class"
       />
-    </div>
-  </footer>
+    </template>
+  </UFooter>
 </template>
+
