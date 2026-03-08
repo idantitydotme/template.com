@@ -36,6 +36,7 @@ const testimonialItems = computed(() => [
 const faqItems = computed(() => [
   {
     label: t("pages.index.faq.categories[0].title"),
+    value: "services",
     questions: [
       {
         label: t("pages.index.faq.categories[0].questions[0].label"),
@@ -49,6 +50,7 @@ const faqItems = computed(() => [
   },
   {
     label: t("pages.index.faq.categories[1].title"),
+    value: "technical",
     questions: [
       {
         label: t("pages.index.faq.categories[1].questions[0].label"),
@@ -237,24 +239,23 @@ const faqUi = {
       <UContainer>
         <UTabs :items="faqItems" orientation="horizontal" :ui="faqUi">
           <template #content="{ item }">
-            <ClientOnly>
-              <UAccordion
-                trailing-icon="lucide:plus"
-                :items="item.questions"
-                :unmount-on-hide="false"
-                :ui="{
-                  item: 'border-none',
-                  trigger:
-                    'mb-2 border-0 group px-4 transform-gpu rounded-lg bg-elevated/60 will-change-transform hover:bg-muted/50 text-base',
-                  trailingIcon:
-                    'group-data-[state=closed]:rotate-0 group-data-[state=open]:rotate-135 text-base text-muted',
-                }"
-              >
-                <template #body="{ item: _item }">
-                  <MDC v-if="_item.content" :value="_item.content" unwrap="p" class="px-4" />
-                </template>
-              </UAccordion>
-            </ClientOnly>
+            <UAccordion
+              trailing-icon="lucide:plus"
+              :items="item.questions"
+              :unmount-on-hide="false"
+              :ui="{
+                item: 'border-none',
+                content: 'data-[state=open]:animate-none data-[state=closed]:animate-none',
+                trigger:
+                  'mb-2 border-0 group px-4 transform-gpu rounded-lg bg-elevated/60 will-change-transform hover:bg-muted/50 text-base',
+                trailingIcon:
+                  'group-data-[state=closed]:rotate-0 group-data-[state=open]:rotate-135 text-base text-muted',
+              }"
+            >
+              <template #body="{ item: _item }">
+                <MDC v-if="_item.content" :value="_item.content" unwrap="p" class="px-4" />
+              </template>
+            </UAccordion>
           </template>
         </UTabs>
       </UContainer>
