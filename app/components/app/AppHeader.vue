@@ -89,7 +89,7 @@ const socialLinks = [
                   variant="ghost"
                   color="neutral"
                   size="md"
-                  class="hover:text-primary-500"
+                  class="rounded-full hover:text-primary-500"
                 >
                   {{ link["aria-label"] }}
                 </UButton>

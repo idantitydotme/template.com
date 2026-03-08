@@ -4,12 +4,15 @@ export default defineNuxtConfig({
     compatibilityVersion: 5,
   },
   experimental: {
-    viteEnvironmentApi: false,
+    // viteEnvironmentApi: false, // Default is usually fine
     typescriptPlugin: true,
     nitroAutoImports: true,
     componentIslands: {
       selectiveClient: true,
     },
+    payloadExtraction: true,
+    viewTransition: true,
+    sharedPrerenderData: true,
   },
 
   modules: [
@@ -63,6 +66,9 @@ export default defineNuxtConfig({
       prerender: {
         routes: ["/"],
         crawlLinks: true,
+      },
+      routeRules: {
+        "/": { swr: true },
       },
     },
     site: {
@@ -120,6 +126,23 @@ export default defineNuxtConfig({
       ],
       link: [
         {
+          rel: "preconnect",
+          href: "https://placehold.co",
+        },
+        {
+          rel: "dns-prefetch",
+          href: "https://placehold.co",
+        },
+        {
+          rel: "preconnect",
+          href: "https://fonts.gstatic.com",
+          crossorigin: "",
+        },
+        {
+          rel: "dns-prefetch",
+          href: "https://fonts.gstatic.com",
+        },
+        {
           rel: "icon",
           type: "image/svg+xml",
           href: "/favicon.svg",
@@ -152,7 +175,7 @@ export default defineNuxtConfig({
           "https://api.unisvg.com",
           "https://api.simplesvg.com",
         ],
-        "font-src": ["'self'", "https://fonts.gstatic.com"],
+        "font-src": ["'self'", "https://fonts.gstatic.com", "https://fonts.googleapis.com"],
         "style-src": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
         "frame-ancestors": ["'self'"],
         "form-action": ["'self'"],
@@ -216,27 +239,14 @@ export default defineNuxtConfig({
 
   fonts: {
     defaults: {
-      weights: [
-        // Thin
-        100,
-        // ExtraLight
-        200,
-        // Light
-        300,
-        // Regular
-        400,
-        // Medium
-        500,
-        // SemiBold
-        600,
-        // Bold
-        700,
-        // Extra Bold
-        800,
-      ],
+      weights: [400, 500, 600, 700],
       styles: ["normal", "italic"],
+      preload: true,
     },
-    families: [],
+    families: [
+      { name: "Public Sans", provider: "google" },
+      { name: "Instrument Serif", provider: "google" },
+    ],
   },
 
   icon: {

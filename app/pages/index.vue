@@ -94,13 +94,14 @@ const faqUi = {
       :ui="{ headline: 'flex justify-center' }"
     >
       <template #headline>
-        <img
+        <NuxtImg
           src="https://placehold.co/72x72"
           alt="Profile photo"
           width="72"
           height="72"
           fetchpriority="high"
           loading="eager"
+          format="webp"
           class="size-18 ring ring-default ring-offset-3 ring-offset-bg mx-auto rounded-full"
         />
       </template>
