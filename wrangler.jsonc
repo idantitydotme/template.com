@@ -7,16 +7,16 @@
     "logs": {
       "enabled": true,
       "head_sampling_rate": 1,
-      "invocation_logs": true,
-    },
+      "invocation_logs": true
+    }
   },
-   "d1_databases": [
-     {
-       "binding": "DB",
-       "database_name": "template-dot-com",
-       "database_id": "2206a1d0-ce96-4aa1-a651-4d4053c24b62",
-    },
-   ]
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "template-dot-com",
+      "database_id": "2206a1d0-ce96-4aa1-a651-4d4053c24b62"
+    }
+  ]
   // "r2_buckets": [
   //   {
   //     "binding": "BLOB",
